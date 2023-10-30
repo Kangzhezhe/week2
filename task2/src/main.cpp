@@ -22,7 +22,7 @@ int main() {
         cerr << "Error: Image not found!" << endl;
         return -1;
     }
-
+    resize(image,image,Size(image.cols/2,image.rows/2));
     imshow("Raw Image", image);
 
     Mat result;
