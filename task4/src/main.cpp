@@ -8,7 +8,7 @@
 using namespace std;
 using namespace cv;
 
-void  GammaTransform(cv::Mat &image, cv::Mat &dist);
+void  GammaTransform(cv::Mat &image, cv::Mat &dist,double gamma = 1.5);
 void  My_GammaTransform(cv::Mat &image, cv::Mat &dist,double gamma = 1.5);
 
 int main(){
@@ -22,21 +22,22 @@ int main(){
 
     Mat dist;
     My_GammaTransform(image,dist,(1.f/2.2));
-    imshow("GammaTransform",dist);
+    imshow("My_GammaTransform",dist);
+
+    Mat dist1;
+    GammaTransform(image,dist1,(1.f/2.2));
+    imshow("opencv_GammaTransform",dist1);
 
     waitKey(0);
     return 0;
 }
 
-void  GammaTransform(cv::Mat &image, cv::Mat &dist)
+void  GammaTransform(cv::Mat &image, cv::Mat &dist,double gamma)
 {
  
 	Mat imageGamma;
 	//灰度归一化
 	image.convertTo(imageGamma, CV_64F, 1.0 / 255, 0);
- 
-	//伽马变换
-	double gamma = 1.5;
  
 	pow(imageGamma, gamma, dist);//dist 要与imageGamma有相同的数据类型
  
