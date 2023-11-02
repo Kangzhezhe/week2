@@ -22,6 +22,7 @@ int main() {
         cerr << "Error: Image not found!" << endl;
         return -1;
     }
+
     resize(image,image,Size(image.cols/2,image.rows/2));
     imshow("Raw Image", image);
 
@@ -156,7 +157,7 @@ void My_PyrDown(const Mat& src,Mat &dst,const Size& dstsize ,double sigma  ){
 void My_PyrUp(const Mat& src, Mat& ret, const Size& dstsize, double sigma) {
     int srcRows = src.rows;
     int srcCols = src.cols;
-
+    
     int dstRows, dstCols;
     if (dstsize.empty()) {
         dstRows = srcRows * 2;
